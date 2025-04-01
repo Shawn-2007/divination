@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁</title>
+    <style>
+        /* 旋轉CSS */
+        .rotate { transform: rotate(0deg); 
+            transition: transform 0.5s; }
+    </style>
+    <!-- 導入bootstrap框架 -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        function random_dice() {
+            var a = 1;
+            var b;
+            let diceImage_main = document.getElementById("diceImage_main");
+            //使用 setInterval 方法每100毫秒切換一次圖片，模擬骰子滾動效果。
+            let interval = setInterval(function () {
+                a++;
+                if (a > 39) a = 1; // 從1到6循環
+                // document.getElementById("diceImage").src = "images/image" + a + ".png";
+                diceImage_main.src = "images/divination/mainCard/main_" + a + ".png";
+            }, 10); // 每100毫秒切換一次圖片
+            //使用 setTimeout 方法在2秒後執行停止圖片切換並顯示最終隨機圖片。
+            // 停止切換圖片並顯示最終結果
+            setTimeout(function () {
+                clearInterval(interval); // 停止setInterval()計時器方法，停止切換圖片
+                diceImage_main.style.transform = 'rotate(0deg)';
+                let finalValue = Math.floor(Math.random() * 39) + 1;
+                // document.getElementById("diceImage").src = "images/image" + finalValue + ".png";
+                diceImage_main.src = "images/divination/mainCard/main_" + finalValue + ".png";
+                b = Math.floor(Math.random() * 2) ;
+                if(b<1){
+                    diceImage_main.style.transform = 'rotate(180deg)';
+                    }
+                    
+            }, 200); // 在2秒後停止
+        }
+
+        function random_dice1() {
+            var a = 1;
+            let diceImage_aid = document.getElementById("diceImage_aid");
+            //使用 setInterval 方法每100毫秒切換一次圖片，模擬骰子滾動效果。
+            let interval = setInterval(function () {
+                a++;
+                if (a > 19) a = 1; // 從1到6循環
+                diceImage_aid.src = "images/divination/aidCard/aid_" + a + ".png";
+
+
+            }, 10); // 每100毫秒切換一次圖片
+
+            //使用 setTimeout 方法在2秒後執行停止圖片切換並顯示最終隨機圖片。
+            // 停止切換圖片並顯示最終結果
+            setTimeout(function () {
+                clearInterval(interval); // 停止setInterval()計時器方法，停止切換圖片
+                diceImage_aid.style.transform = 'rotate(0deg)';
+
+                let finalValue = Math.floor(Math.random() * 19) + 1;
+                // document.getElementById("diceImage").src = "images/image" + finalValue + ".png";
+                diceImage_aid.src = "images/divination/aidCard/aid_" + finalValue + ".png";
+                
+                // document.getElementById("msg1").innerHTML = finalValue;
+                b = Math.floor(Math.random() * 2) ;
+                if(b<1){
+                    diceImage_aid.style.transform = 'rotate(180deg)';
+                    }
+
+
+            }, 200); // 在2秒後停止
+        }
+        function random_dice2() {
+            var a = 1;
+            let diceImage_life = document.getElementById("diceImage_life");
+
+            //使用 setInterval 方法每100毫秒切換一次圖片，模擬骰子滾動效果。
+            let interval = setInterval(function () {
+                a++;
+                if (a > 12) a = 1; // 從1到6循環
+                diceImage_life.src = "images/divination/lifeCard/life_" + a + ".png";
+            }, 10); // 每100毫秒切換一次圖片
+
+            setTimeout(function () {
+                clearInterval(interval); // 停止setInterval()計時器方法，停止切換圖片
+                diceImage_life.style.transform = 'rotate(0deg)';
+
+                let finalValue = Math.floor(Math.random() * 12) + 1;
+                // document.getElementById("diceImage").src = "images/image" + finalValue + ".png";
+                diceImage_life.src = "images/divination/lifeCard/life_" + finalValue + ".png";
+                b = Math.floor(Math.random() * 2) ;
+                if(b<1){
+                    diceImage_life.style.transform = 'rotate(180deg)';
+                    }
+            
+            }, 200); // 在2秒後停止
+        }
+    </script>
+    <style>
+        .card-custom{
+            margin:auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <input type="button" value="骰動" onclick="random_dice()"> -->
+    <!-- <div onclick="random_dice()">骰動</div> -->
+
+    <div id="msg1"></div>
+    
+    <div class="container">
+        <div class="card card-custom">
+            <div class="row">
+                <div class="col">
+                    <img id="diceImage_main"  class="img-fluid" src="images/divination/mainCard/main_0.png" width="400px" alt="Dice Image" onclick="random_dice()">
+                </div>
+                <div class="col">
+                    <img id="diceImage_aid" class="img-fluid" src="images/divination/aidCard/aid_0.png" width="400px" alt="Dice Image" onclick="random_dice1()">
+                </div>
+                <div class="col">
+                    <img id="diceImage_life" class="img-fluid" src="images/divination/lifeCard/life_0.png" width="400px" alt="Dice Image" onclick="random_dice2()">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>
